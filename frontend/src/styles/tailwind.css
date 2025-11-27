@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@import "./animations.css";
+@import "./utilities.css";
+
+@theme {
+    --background: #040556;
+    --card: #0a0a78;
+    --button-cta: #cc3558;
+    --button-cta-hover: #e4476c;
+    --primary: #ffffff;
+    --secondary: #d1c4e9;
+    --muted: #f3f1ff;
+}

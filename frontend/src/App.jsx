@@ -1,10 +1,12 @@
-import { Button } from "@/components/ui/button";
+import HeroSection from "./components/layout/HeroSection";
+import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
 
 function App() {
     return (
-        <div className="flex min-h-svh flex-col items-center justify-center">
-            <Button>Click me</Button>
-        </div>
+        <>
+            <HeroSection />
+        </>
     );
 }
 

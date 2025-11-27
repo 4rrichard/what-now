@@ -1,8 +1,1 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
-@theme {
-    --color-mint-500: oklch(0.72 0.11 178);
-}
+@import "./styles/tailwind.css";
