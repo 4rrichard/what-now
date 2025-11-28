@@ -10,10 +10,10 @@
 
 @keyframes searchbar-slide-up {
     0% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
     100% {
-        transform: translateY(-280px) scale(0.9);
+        transform: translateY(-40px);
     }
 }
 
@@ -23,5 +23,5 @@
 }
 
 @utility animate-searchbar-up {
-    animation: searchbar-slide-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: searchbar-slide-up 0.7s ease-out forwards;
 }

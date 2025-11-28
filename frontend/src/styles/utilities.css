@@ -18,30 +18,30 @@
     background-color: var(--card);
 }
 
-@utility bg-button-cta {
-    background-color: var(--button-cta);
+@utility highlight {
+    background-color: var(--highlight);
 }
 
-@utility bg-button-cta-hover {
-    background-color: var(--button-cta-hover);
+@utility highlight-hover {
+    background-color: var(--highlight-hover);
 }
 
 @utility hero-bg {
-    @apply bg-gradient-to-br 
+    @apply bg-linear-to-br 
            from-[var(--background)]
-           via-[var(--card)] 
-           to-[var(--button-cta)]
+           via-[var(--card)]
+           to-[var(--highlight)]
            animate-gradient;
 }
 
 @utility cta-button {
-    @apply !px-8 !h-16 !text-xl 
-           bg-button-cta 
+    @apply px-8! h-16! text-xl! 
+           highlight 
            text-primary       
            font-semibold
            cursor-pointer
-           !rounded-r-full
-           hover:bg-button-cta-hover
+           rounded-r-full!
+           hover:highlight-hover
            transition-all duration-200
            backdrop-blur-xl
            border border-white/10;

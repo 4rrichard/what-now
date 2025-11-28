@@ -13,7 +13,10 @@ function SearchForm({ onSearch }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex  justify-center py-10">
+        <form
+            onSubmit={handleSubmit}
+            className="w-full flex justify-center py-10"
+        >
             <SearchInput value={value} setValue={setValue} />
             <SearchButton />
         </form>
