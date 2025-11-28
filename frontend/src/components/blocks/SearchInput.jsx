@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 
-function SearchInput() {
+function SearchInput({ value, setValue }) {
     return (
         <Input
             className="
@@ -15,6 +15,8 @@ function SearchInput() {
                 focus:placeholder:opacity-0
             "
             placeholder="How are you feeling?"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
         />
     );
 }

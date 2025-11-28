@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchInput from "./SearchInput";
-import CTAButton from "./SearchButton";
+import SearchButton from "./SearchButton";
 
-function SearchForm() {
+function SearchForm({ onSearch }) {
+    const [value, setValue] = useState("");
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        console.log(value);
+        onSearch(value);
+    }
+
     return (
-        <form className="flex  justify-center py-10">
-            <SearchInput />
-            <CTAButton />
+        <form onSubmit={handleSubmit} className="flex  justify-center py-10">
+            <SearchInput value={value} setValue={setValue} />
+            <SearchButton />
         </form>
     );
 }
