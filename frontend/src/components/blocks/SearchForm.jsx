@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchInput from "./SearchInput";
 import SearchButton from "./SearchButton";
+import GameRequest from "./GameRequest";
 
 function SearchForm({ onSearch }) {
     const [value, setValue] = useState("");
@@ -8,14 +9,14 @@ function SearchForm({ onSearch }) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        console.log(value);
         onSearch(value);
+        setValue("");
     }
 
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full flex justify-center py-10"
+            className="w-full flex justify-center pt-10"
         >
             <SearchInput value={value} setValue={setValue} />
             <SearchButton />

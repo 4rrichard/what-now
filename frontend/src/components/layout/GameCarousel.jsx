@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ResultCard from "../blocks/GameCard";
+import GameCard from "../blocks/GameCard";
 import {
     Carousel,
     CarouselContent,
@@ -7,6 +7,8 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
+
+import games from "../../assets/games";
 
 function GameCarousel() {
     const [emblaApi, setEmblaApi] = useState(null);
@@ -25,28 +27,31 @@ function GameCarousel() {
 
     return (
         <Carousel
-            className="max-w-full "
+            className="w-full max-w-[1150px]"
             opts={{ loop: true }}
             setApi={setEmblaApi}
         >
-            <CarouselContent className="-ml-1 flex items-center relative">
-                {Array.from({ length: 5 }).map((_, index) => {
+            <CarouselContent className="flex gap-6 px-6">
+                {games.map((game, index) => {
                     const isCenter = index === selectedIndex;
 
                     return (
                         <CarouselItem
                             key={index}
-                            className={`pl-1 md:basis-1/2 lg:basis-1/3 flex justify-center relative
-                    ${isCenter ? "z-[60]" : "z-[10]"}
-                `}
+                            className="basis-[340px] flex justify-center snap-start"
                         >
                             <div
-                                className={`
-                        transition-all duration-500
-                        ${isCenter ? "scale-110" : "scale-90 opacity-70"}
-                    `}
+                                className={`transition-all duration-500 ${
+                                    isCenter
+                                        ? "scale-100 z-50"
+                                        : "scale-70 opacity-30 z-0"
+                                }`}
                             >
-                                <ResultCard />
+                                <GameCard
+                                    gameTitle={game.title}
+                                    gameDesc={game.description}
+                                    gameImg={game.image}
+                                />
                             </div>
                         </CarouselItem>
                     );

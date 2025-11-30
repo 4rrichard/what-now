@@ -10,8 +10,9 @@ function SearchInput({ value, setValue }) {
                 border-2 border-[#cc3558]/70 rounded-l-full px-6 
                 focus-visible:ring-transparent
                 focus:border-[#cc3558] focus:border-3
+                focus:bg-[#cc3558]/20
                 focus:text-xl
-                hover:bg-[#0a0a78]/20  
+                hover:bg-[#cc3558]/20  
                 focus:placeholder:opacity-0
                 
             "

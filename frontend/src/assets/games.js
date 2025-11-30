@@ -1,4 +1,4 @@
-export const games = [
+const games = [
     {
         id: 1,
         title: "Stardew Valley",
@@ -100,3 +100,5 @@ export const games = [
             "Create a peaceful island life filled with cute villagers and decorations.",
     },
 ];
+
+export default games;

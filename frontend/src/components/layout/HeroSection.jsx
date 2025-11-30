@@ -3,23 +3,32 @@ import SearchForm from "../blocks/SearchForm";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import GameCarousel from "./GameCarousel";
+import SkeletonGameCarousel from "./SkeletonGameCarousel";
+import SearchSection from "./SearchSection";
 
 function HeroSection() {
     const [isSearching, setIsSearching] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
 
     function handleSearch(value) {
-        console.log("User searched:", value);
         setIsSearching(true);
+        setIsLoading(true);
+        setSearchValue(value);
+
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1200);
     }
 
     return (
-        <section className="hero-bg min-h-screen relative flex justify-center">
+        <section className="hero-bg min-h-screen flex justify-center">
             <NavBar />
 
             <div
-                className={`w-full flex flex-col text-center transition-all duration-300 pr-20 pl-20 ${
+                className={`w-full flex flex-col text-center transition-all duration-300 px-6 lg:px-20 ${
                     isSearching
-                        ? "pt-10 pb-10 justify-center overflow-hidden"
+                        ? "pt-10 pb-10 justify-center overflow-y-hidden"
                         : "pt-32"
                 }`}
             >
@@ -40,16 +49,25 @@ function HeroSection() {
                 </div>
 
                 <div
-                    className={`relative w-full transition-transform duration-700 transform-gpu overflow-hidden ${
+                    className={`relative w-full transition-transform duration-700 transform-gpu ${
                         isSearching ? "animate-searchbar-up" : ""
                     }`}
                 >
-                    <SearchForm onSearch={handleSearch} />
+                    <SearchSection
+                        onSearch={handleSearch}
+                        value={searchValue}
+                    />
                 </div>
 
                 {isSearching && (
-                    <div className=" w-full">
-                        <GameCarousel />
+                    <div className="mt-10 w-full flex justify-center">
+                        {isLoading ? (
+                            <SkeletonGameCarousel />
+                        ) : (
+                            <div className=" w-full">
+                                <GameCarousel />
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

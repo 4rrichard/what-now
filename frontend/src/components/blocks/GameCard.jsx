@@ -8,26 +8,27 @@ import {
     CardFooter,
 } from "@/components/ui/card";
 
-const GameCard = () => {
+// import gameImg from "../../assets/rock-bg.jpg";
+
+import { useEffect } from "react";
+
+const GameCard = ({ gameTitle, gameDesc, gameImg }) => {
     return (
-        <Card className="min-w-md max-h-4/5 pt-0 text-primary">
+        <Card className="min-w-[340px] pt-0 text-primary bg-[#0a0a78]/20">
             <CardContent className="px-0">
                 <img
-                    src="https://cdn.shadcnstudio.com/ss-assets/components/card/image-2.png?height=280&format=auto"
+                    src={gameImg}
                     alt="Banner"
                     className="aspect-video rounded-t-xl object-cover"
                 />
             </CardContent>
             <CardHeader>
-                <CardTitle>Ethereal Swirl Gradient</CardTitle>
-                <CardDescription>
-                    Smooth, flowing gradients blending rich reds and blues in an
-                    abstract swirl.
-                </CardDescription>
+                <CardTitle>{gameTitle}</CardTitle>
+                <CardDescription>{gameDesc}</CardDescription>
             </CardHeader>
             <CardFooter className="gap-3 max-sm:flex-col max-sm:items-stretch">
-                <Button>Explore More</Button>
-                <Button variant={"outline"}>Download Now</Button>
+                <Button>Save to Favorites</Button>
+                <Button variant={"outline"}>More Details</Button>
             </CardFooter>
         </Card>
     );
