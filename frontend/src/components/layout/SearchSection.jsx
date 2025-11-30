@@ -4,7 +4,7 @@ import GameRequest from "../blocks/GameRequest";
 
 function SearchSection({ onSearch, value }) {
     return (
-        <div>
+        <div className="px-20">
             <SearchForm onSearch={onSearch} />
             <GameRequest value={value} />
         </div>

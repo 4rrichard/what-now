@@ -1,5 +1,4 @@
-import { useState } from "react";
-import SearchForm from "../blocks/SearchForm";
+import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import GameCarousel from "./GameCarousel";
@@ -21,12 +20,21 @@ function HeroSection() {
         }, 1200);
     }
 
+    useEffect(() => {
+        const fetchApi = async () => {
+            const response = await fetch("/api/recommend?recommendation=cozy");
+            const data = await response.text();
+            console.log(data);
+        };
+        fetchApi();
+    }, []);
+
     return (
-        <section className="hero-bg min-h-screen flex justify-center">
+        <section className="hero-bg pt-28 min-h-screen  w-full">
             <NavBar />
 
             <div
-                className={`w-full flex flex-col text-center transition-all duration-300 px-6 lg:px-20 ${
+                className={`w-full flex flex-col text-center transition-all duration-300${
                     isSearching
                         ? "pt-10 pb-10 justify-center overflow-y-hidden"
                         : "pt-32"
@@ -60,7 +68,7 @@ function HeroSection() {
                 </div>
 
                 {isSearching && (
-                    <div className="mt-10 w-full flex justify-center">
+                    <div className="mt-10 w-full flex flex-col justify-center">
                         {isLoading ? (
                             <SkeletonGameCarousel />
                         ) : (

@@ -10,19 +10,17 @@ import {
 
 // import gameImg from "../../assets/rock-bg.jpg";
 
-import { useEffect } from "react";
-
 const GameCard = ({ gameTitle, gameDesc, gameImg }) => {
     return (
-        <Card className="min-w-[340px] pt-0 text-primary bg-[#0a0a78]/20">
+        <Card className="w-[380px] h-[380px] pt-0 text-primary bg-[#0a0a78]/20 overflow-hidden">
             <CardContent className="px-0">
                 <img
                     src={gameImg}
                     alt="Banner"
-                    className="aspect-video rounded-t-xl object-cover"
+                    className="aspect-video rounded-t-xl object-cover select-none"
                 />
             </CardContent>
-            <CardHeader>
+            <CardHeader className="select-none">
                 <CardTitle>{gameTitle}</CardTitle>
                 <CardDescription>{gameDesc}</CardDescription>
             </CardHeader>

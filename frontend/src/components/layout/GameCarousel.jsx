@@ -27,24 +27,24 @@ function GameCarousel() {
 
     return (
         <Carousel
-            className="w-full max-w-[1150px]"
-            opts={{ loop: true }}
+            className="w-full"
+            opts={{ loop: true, align: "center", containScroll: "trimSnaps" }}
             setApi={setEmblaApi}
         >
-            <CarouselContent className="flex gap-6 px-6">
+            <CarouselContent className="ml-0! px-0!">
                 {games.map((game, index) => {
                     const isCenter = index === selectedIndex;
 
                     return (
                         <CarouselItem
                             key={index}
-                            className="basis-[340px] flex justify-center snap-start"
+                            className="pl-0! basis-[380px] flex justify-center snap-start"
                         >
                             <div
                                 className={`transition-all duration-500 ${
                                     isCenter
                                         ? "scale-100 z-50"
-                                        : "scale-70 opacity-30 z-0"
+                                        : "scale-75 opacity-40 z-0"
                                 }`}
                             >
                                 <GameCard
