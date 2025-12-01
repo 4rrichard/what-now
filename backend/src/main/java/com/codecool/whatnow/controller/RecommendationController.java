@@ -18,7 +18,7 @@ public class RecommendationController {
     @GetMapping("/api/recommend")
     public String recommend(@RequestParam(required = false) String recommendation) {
         if (recommendation == null || recommendation.isBlank()) {
-            recommendation = "popular"; 
+            recommendation = "popular";
         }
         return rawgService.getGames(recommendation);
     }
