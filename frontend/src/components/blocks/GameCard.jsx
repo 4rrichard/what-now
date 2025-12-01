@@ -15,13 +15,13 @@ const GameCard = ({ gameData }) => {
         <Card className="w-[380px] h-[380px] pt-0 text-primary bg-[#0a0a78]/20 overflow-hidden">
             <CardContent className="px-0">
                 <img
-                    src={gameData.background_image}
+                    src={gameData.image}
                     alt="Banner"
                     className="aspect-video rounded-t-xl object-cover select-none"
                 />
             </CardContent>
             <CardHeader className="select-none">
-                <CardTitle>{gameData.name}</CardTitle>
+                <CardTitle>{gameData.title}</CardTitle>
                 <CardDescription>{gameData.rating}</CardDescription>
             </CardHeader>
             <CardFooter className="gap-3 max-sm:flex-col max-sm:items-stretch">
