@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import GameCard from "../blocks/GameCard";
 import {
     Carousel,
     CarouselContent,
     CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import games from "../../assets/games";
+import GameContext from "../../context/GameProvider";
 
 function GameCarousel() {
+    const { games } = useContext(GameContext);
+
     const [emblaApi, setEmblaApi] = useState(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -47,11 +47,7 @@ function GameCarousel() {
                                         : "scale-75 opacity-40 z-0"
                                 }`}
                             >
-                                <GameCard
-                                    gameTitle={game.title}
-                                    gameDesc={game.description}
-                                    gameImg={game.image}
-                                />
+                                <GameCard key={game.id} gameData={game} />
                             </div>
                         </CarouselItem>
                     );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import GameCarousel from "./GameCarousel";
@@ -19,15 +19,6 @@ function HeroSection() {
             setIsLoading(false);
         }, 1200);
     }
-
-    useEffect(() => {
-        const fetchApi = async () => {
-            const response = await fetch("/api/recommend?recommendation=cozy");
-            const data = await response.text();
-            console.log(data);
-        };
-        fetchApi();
-    }, []);
 
     return (
         <section className="hero-bg pt-28 min-h-screen  w-full">
