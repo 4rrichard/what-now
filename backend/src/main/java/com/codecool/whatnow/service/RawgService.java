@@ -27,6 +27,7 @@ public class RawgService {
                         .path("/games")
                         .queryParam("key",apiKey)
                         .queryParam("search", query)
+                        .queryParam("page_size", 5)
                         .build())
                 .retrieve()
                 .bodyToMono(RawgResponse.class);
@@ -54,6 +55,9 @@ public class RawgService {
     public List<GameDto> getGames(String query) {
         List<RawgGame> rawGames = fetchRawgGames(query);
 
-        return rawGames.stream().map(this::convertToDto).toList();
+        return rawGames.stream()
+                .limit(5)
+                .map(this::convertToDto)
+                .toList();
     }
 }
