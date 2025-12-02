@@ -1,11 +1,14 @@
-import React from "react";
+import GameContext from "../../context/GameProvider";
+import React, { useContext } from "react";
 
-function GameRequest({ value }) {
+function GameRequest() {
+    const { summary } = useContext(GameContext);
+
     return (
         <div className="flex content-start text-secondary text-lg mt-4">
-            {value ? (
+            {summary ? (
                 <p>
-                    You searched for: <strong>{value}</strong>
+                    Showing results for: <strong>{summary}</strong>
                 </p>
             ) : null}
         </div>

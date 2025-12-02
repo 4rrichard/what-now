@@ -56,7 +56,7 @@ public class RawgService {
         List<RawgGame> rawGames = fetchRawgGames(query);
 
         return rawGames.stream()
-                .limit(5)
+                .limit(1)
                 .map(this::convertToDto)
                 .toList();
     }

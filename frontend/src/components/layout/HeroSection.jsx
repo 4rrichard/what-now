@@ -10,12 +10,12 @@ function HeroSection() {
     const { searchGames } = useContext(GameContext);
     const [isSearching, setIsSearching] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const [searchValue, setSearchValue] = useState("");
+    //const [searchValue, setSearchValue] = useState("");
 
     async function handleSearch(value) {
         setIsSearching(true);
         setIsLoading(true);
-        setSearchValue(value);
+        //setSearchValue(value);
 
         await searchGames(value);
         // setTimeout(() => {
@@ -56,10 +56,7 @@ function HeroSection() {
                         isSearching ? "animate-searchbar-up" : ""
                     }`}
                 >
-                    <SearchSection
-                        onSearch={handleSearch}
-                        value={searchValue}
-                    />
+                    <SearchSection onSearch={handleSearch} />
                 </div>
 
                 {isSearching && (

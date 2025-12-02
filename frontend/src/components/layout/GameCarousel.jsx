@@ -35,14 +35,14 @@ function GameCarousel() {
             opts={{ loop: true, align: "center", containScroll: "trimSnaps" }}
             setApi={setEmblaApi}
         >
-            <CarouselContent className="ml-0! px-0!">
+            <CarouselContent className="ml-0 px-0 flex">
                 {games.map((game, index) => {
                     const isCenter = index === selectedIndex;
 
                     return (
                         <CarouselItem
-                            key={index}
-                            className="pl-0! basis-[380px] flex justify-center snap-start"
+                            key={game.id}
+                            className="pl-0 basis-[380px] flex justify-center snap-start"
                         >
                             <div
                                 className={`transition-all duration-500 ${
@@ -51,7 +51,7 @@ function GameCarousel() {
                                         : "scale-75 opacity-40 z-0"
                                 }`}
                             >
-                                <GameCard key={game.id} gameData={game} />
+                                <GameCard gameData={game} />
                             </div>
                         </CarouselItem>
                     );
