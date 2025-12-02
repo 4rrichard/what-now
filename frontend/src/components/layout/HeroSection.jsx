@@ -1,23 +1,27 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import GameCarousel from "./GameCarousel";
 import SkeletonGameCarousel from "./SkeletonGameCarousel";
 import SearchSection from "./SearchSection";
+import GameContext from "../../context/GameProvider";
 
 function HeroSection() {
+    const { searchGames } = useContext(GameContext);
     const [isSearching, setIsSearching] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [searchValue, setSearchValue] = useState("");
 
-    function handleSearch(value) {
+    async function handleSearch(value) {
         setIsSearching(true);
         setIsLoading(true);
         setSearchValue(value);
 
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 1200);
+        await searchGames(value);
+        // setTimeout(() => {
+        //     setIsLoading(false);
+        // }, 1200);
+        setIsLoading(false);
     }
 
     return (

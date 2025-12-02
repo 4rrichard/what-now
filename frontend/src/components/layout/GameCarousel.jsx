@@ -25,6 +25,10 @@ function GameCarousel() {
         onSelect();
     }, [emblaApi]);
 
+    if (!games || games.length === 0) {
+        return <p className="text-center text-white mt-10">No games found.</p>;
+    }
+
     return (
         <Carousel
             className="w-full"
