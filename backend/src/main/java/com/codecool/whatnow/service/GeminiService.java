@@ -16,7 +16,21 @@ public class GeminiService {
                 .build();
     }
 
-    public String ask(String prompt) {
+    public String chat(String message) {
+        GenerateContentResponse response = client.models.generateContent(
+                "gemini-2.5-flash",
+                """
+                You are a friendly AI game assistant. 
+                Respond conversationally and naturally.
+                User: %s
+                """.formatted(message),
+                null
+        );
+
+        return response.text();
+    }
+
+    public String recommend(String prompt) {
         GenerateContentResponse response = client.models
                 .generateContent(
                         "gemini-2.5-flash",

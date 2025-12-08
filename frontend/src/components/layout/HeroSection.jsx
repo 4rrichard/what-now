@@ -3,11 +3,13 @@ import GameCarousel from "./GameCarousel";
 import SkeletonGameCarousel from "./SkeletonGameCarousel";
 import SearchSection from "./SearchSection";
 import GameContext from "../../context/GameProvider";
+import AiChatModal from "./AiChatModal";
 
 function HeroSection() {
     const { searchGames } = useContext(GameContext);
     const [isSearching, setIsSearching] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [isChatOpen, setIsChatOpen] = useState(false);
     //const [searchValue, setSearchValue] = useState("");
 
     async function handleSearch(value) {
@@ -23,7 +25,7 @@ function HeroSection() {
     }
 
     return (
-        <section className="hero-bg flex min-h-screen  w-full">
+        <section className="hero-bg flex min-h-screen  w-full pb-50">
             <div
                 className={`w-full flex flex-col justify-center content-center text-center transition-all duration-300${
                     isSearching
@@ -55,7 +57,10 @@ function HeroSection() {
                 : "translate-y-0 opacity-100 scale-100"
         }`}
                 >
-                    <SearchSection onSearch={handleSearch} />
+                    <SearchSection
+                        onSearch={handleSearch}
+                        onOpenChat={() => setIsChatOpen(true)}
+                    />
                 </div>
 
                 {isSearching && (
@@ -70,6 +75,12 @@ function HeroSection() {
                     </div>
                 )}
             </div>
+            {isChatOpen && (
+                <AiChatModal
+                    isOpen={isChatOpen}
+                    onClose={() => setIsChatOpen(false)}
+                />
+            )}
         </section>
     );
 }

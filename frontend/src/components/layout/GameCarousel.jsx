@@ -20,27 +20,27 @@ function GameCarousel() {
     const getSlideClasses = (index) => {
         const relative = (index - selectedIndex + games.length) % games.length;
 
-        // ⭐ CENTER — big, visible, crisp
+        // CENTER
         if (relative === 0)
             return "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] z-30 scale-100 opacity-100 transition-all duration-700 pointer-events-auto hover:scale-130 hover:z-40 hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] text-xl";
 
-        // ⭐ RIGHT 1 — slightly smaller
+        //  RIGHT 1
         if (relative === 1)
             return "absolute top-1/2 left-[72%] -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] z-10 scale-90 opacity-80 transition-all duration-700 blur-[1px] pointer-events-none text-lg";
 
-        // ⭐ RIGHT 2 — farther, higher, blurred
+        // RIGHT 2
         if (relative === 2)
             return "absolute top-1/2 left-[60%] -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] -translate-y-[15%] z-5 scale-75 opacity-50 blur-sm transition-all duration-700 pointer-events-none";
 
-        // ⭐ LEFT 1
+        // LEFT 1
         if (relative === games.length - 1)
             return "absolute top-1/2 left-[28%] -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] z-10 scale-90 opacity-80 blur-[1px] transition-all duration-700 pointer-events-none text-lg";
 
-        // ⭐ LEFT 2 — farther, higher, blurred
+        // LEFT 2
         if (relative === games.length - 2)
             return "absolute top-1/2 left-[40%] -translate-x-1/2 -translate-y-1/2 w-[220px] h-[220px] -translate-y-[15%] z-5 scale-75 opacity-50 blur-sm transition-all duration-700 pointer-events-none";
 
-        // ⭐ HIDDEN
+        // HIDDEN
         return "absolute opacity-0 pointer-events-none transition-all duration-700";
     };
 

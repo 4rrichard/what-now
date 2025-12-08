@@ -11,7 +11,7 @@ export const GameProvider = ({ children }) => {
 
     const askAI = async (prompt) => {
         try {
-            const response = await fetch("/api/gemini/ask", {
+            const response = await fetch("/api/gemini/recommend", {
                 method: "POST",
                 headers: { "Content-Type": "text/plain" },
                 body: prompt,
@@ -43,7 +43,6 @@ export const GameProvider = ({ children }) => {
 
             let results = [];
 
-            // api data:
             for (const item of gameTitlesWithMatch) {
                 const resp = await fetch(
                     `/api/recommend?recommendation=${item.name}`

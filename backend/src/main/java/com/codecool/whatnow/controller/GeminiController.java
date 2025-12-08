@@ -12,11 +12,18 @@ public class GeminiController {
     private final GeminiService geminiService;
 
     public GeminiController(GeminiService geminiService) {
+
         this.geminiService = geminiService;
     }
 
-    @PostMapping("/ask")
-    public String ask(@RequestBody String prompt) {
-        return geminiService.ask(prompt);
+    @PostMapping("/chat")
+    public String chat(@RequestBody String message) {
+        return geminiService.chat(message);
+    }
+
+    @PostMapping("/recommend")
+    public String recommend(@RequestBody String prompt) {
+
+        return geminiService.recommend(prompt);
     }
 }
