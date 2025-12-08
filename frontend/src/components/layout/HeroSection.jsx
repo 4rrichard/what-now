@@ -1,6 +1,4 @@
 import { useContext, useState } from "react";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
 import GameCarousel from "./GameCarousel";
 import SkeletonGameCarousel from "./SkeletonGameCarousel";
 import SearchSection from "./SearchSection";
@@ -25,13 +23,11 @@ function HeroSection() {
     }
 
     return (
-        <section className="hero-bg pt-28 min-h-screen  w-full">
-            <NavBar />
-
+        <section className="hero-bg flex min-h-screen  w-full">
             <div
-                className={`w-full flex flex-col text-center transition-all duration-300${
+                className={`w-full flex flex-col justify-center content-center text-center transition-all duration-300${
                     isSearching
-                        ? "pt-10 pb-10 justify-center overflow-y-hidden"
+                        ? "pt-32 justify-center overflow-y-hidden"
                         : "pt-32"
                 }`}
             >
@@ -52,9 +48,12 @@ function HeroSection() {
                 </div>
 
                 <div
-                    className={`relative w-full transition-transform duration-700 transform-gpu ${
-                        isSearching ? "animate-searchbar-up" : ""
-                    }`}
+                    className={` w-full transition-all duration-700 ease-out transform-gpu
+        ${
+            isSearching
+                ? "opacity-100 scale-100"
+                : "translate-y-0 opacity-100 scale-100"
+        }`}
                 >
                     <SearchSection onSearch={handleSearch} />
                 </div>
@@ -71,8 +70,6 @@ function HeroSection() {
                     </div>
                 )}
             </div>
-
-            <Footer />
         </section>
     );
 }

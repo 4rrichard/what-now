@@ -5,7 +5,9 @@ import Footer from "./components/layout/Footer";
 function App() {
     return (
         <>
+            <NavBar />
             <HeroSection />
+            <Footer />
         </>
     );
 }

@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 // import mockData from "../data/games.json";
-
+import { RECOMMENDATION_PROMPT } from "../ai/prompts";
 const GameContext = createContext(null);
 
 export const GameProvider = ({ children }) => {
@@ -28,26 +28,7 @@ export const GameProvider = ({ children }) => {
             // mock data
             // setGames(mockData.results);
 
-            const aiResponse = await askAI(`You are a game recommender AI.
-
-Analyze the user's request: "${userInput}"
-
-Return ONLY valid JSON with NO explanation, NO commentary, NO code fences, NO backticks.
-
-Format EXACTLY like this:
-
-{
-  "summary": "a short natural-sounding one-line summary of what the user wants without mentioning the user",
-  "titles": ["Game1", "Game2", "Game3", "Game4", "Game5"]
-}
-
-Rules:
-- The summary should be about what type of results are found.
-- DO NOT include any extra text before or after the JSON.
-- "summary" must be a simple clean human sentence, NOT a category.
-- "titles" must contain 5 real video game titles.
-
-            `);
+            const aiResponse = await askAI(RECOMMENDATION_PROMPT(userInput));
 
             const clean = aiResponse
                 .replace(/```json/gi, "")
@@ -58,17 +39,20 @@ Rules:
 
             const parsed = JSON.parse(clean);
             setSummary(parsed.summary);
-            const titles = parsed.titles;
+            const gameTitlesWithMatch = parsed.titles;
 
             let results = [];
 
             // api data:
-            for (const title of titles) {
+            for (const item of gameTitlesWithMatch) {
                 const resp = await fetch(
-                    `/api/recommend?recommendation=${title}`
+                    `/api/recommend?recommendation=${item.name}`
                 );
-                const game = await resp.json();
-                results.push(...game);
+                const gameData = await resp.json();
+                results.push({
+                    ...gameData[0],
+                    match: item.match,
+                });
             }
             setGames(results);
         } catch (error) {
