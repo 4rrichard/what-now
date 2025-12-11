@@ -17,7 +17,7 @@ function SearchForm({ onSearch, onOpenChat }) {
     return (
         <form
             onSubmit={handleSubmit}
-            className="w-full flex justify-center pt-10"
+            className="w-full flex justify-center pt-20"
         >
             <div className="relative w-full max-w-xl">
                 <SearchInput value={value} setValue={setValue} />

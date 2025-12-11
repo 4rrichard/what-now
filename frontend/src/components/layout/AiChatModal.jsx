@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
     Dialog,
     DialogContent,
@@ -7,8 +7,11 @@ import {
 } from "@/components/ui/dialog";
 import AiChatInput from "../blocks/AiChatInput";
 import AiChatConversation from "../blocks/AiChatConversation";
+import GameContext from "../../context/GameProvider";
 
 function AiChatModal({ isOpen, onClose }) {
+    const { searchGames } = useContext(GameContext);
+
     const [messages, setMessages] = useState([
         { sender: "ai", text: "Hi! What kind of game are you looking for?" },
     ]);
@@ -27,11 +30,24 @@ function AiChatModal({ isOpen, onClose }) {
     };
 
     const handleUserMessage = async (text) => {
-        setMessages((prev) => [...prev, { sender: "user", text }]);
+        setMessages((prev) => [
+            ...prev,
+            { sender: "user", text },
+            { sender: "ai", text: "", loading: true },
+        ]);
 
         const aiReply = await sendChatMessage(text);
 
-        setMessages((prev) => [...prev, { sender: "ai", aiReply }]);
+        setMessages((prev) => {
+            const copy = [...prev];
+            copy[copy.length - 1] = { sender: "ai", text: aiReply };
+            return copy;
+        });
+    };
+
+    const handleAiRecommend = (text) => {
+        onClose();
+        searchGames(text);
     };
 
     return (
@@ -46,7 +62,10 @@ function AiChatModal({ isOpen, onClose }) {
                     </DialogTitle>
                 </DialogHeader>
                 <div className="flex flex-col h-[480px]">
-                    <AiChatConversation messages={messages} />
+                    <AiChatConversation
+                        messages={messages}
+                        onAiRecommend={handleAiRecommend}
+                    />
                     <AiChatInput onUserMessage={handleUserMessage} />
                 </div>
             </DialogContent>

@@ -4,7 +4,7 @@ import GameRequest from "../blocks/GameRequest";
 
 function SearchSection({ onSearch, onOpenChat }) {
     return (
-        <div className="px-20">
+        <div className="flex flex-col items-center px-20">
             <SearchForm onSearch={onSearch} onOpenChat={onOpenChat} />
             <GameRequest />
         </div>

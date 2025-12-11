@@ -25,7 +25,7 @@ function HeroSection() {
     }
 
     return (
-        <section className="hero-bg flex min-h-screen  w-full pb-50">
+        <section className="hero-bg flex min-h-screen  w-full">
             <div
                 className={`w-full flex flex-col justify-center content-center text-center transition-all duration-300${
                     isSearching
