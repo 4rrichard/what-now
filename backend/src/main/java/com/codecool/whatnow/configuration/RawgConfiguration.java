@@ -8,8 +8,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class RawgConfiguration {
-
-    @Bean
+//
+    //@Bean
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder()
                 .baseUrl("https://api.rawg.io/api")
@@ -17,7 +17,7 @@ public class RawgConfiguration {
     }
 
     @Bean
-    public WebClient webClient(WebClient.Builder builder) {
-        return builder.build();
+    public WebClient webClient() {
+        return webClientBuilder().build();
     }
 }
